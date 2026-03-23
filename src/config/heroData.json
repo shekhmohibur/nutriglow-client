@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "image": "",
+    "title": "Feel Better. Sleep Better. Live Better.",
+    "description": "Premium natural supplements crafted to improve sleep quality, strengthen immunity, and support your everyday wellness journey.",
+    "primaryBtn": "Shop Now",
+    "secondaryBtn": "Learn More"
+  },
+  {
+    "id": 2,
+    "image": "",
+    "title": "Wellness That Works Naturally",
+    "description": "Science-backed formulas made with clean ingredients to help you relax, recover, and perform at your best.",
+    "primaryBtn": "Explore Products",
+    "secondaryBtn": "View Details"
+  },
+  {
+    "id": 3,
+    "image": "",
+    "title": "Support Your Mind & Body Daily",
+    "description": "Upgrade your lifestyle with supplements designed for better sleep, stronger immunity, and balanced energy.",
+    "primaryBtn": "Get Started",
+    "secondaryBtn": "See Collection"
+  }
+]
