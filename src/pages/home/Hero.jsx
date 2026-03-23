@@ -117,7 +117,7 @@ export default function Hero() {
                 </p>
 
                 <div className="flex gap-3 sm:gap-4 flex-wrap">
-                  <button className="btn btn-primary rounded-full px-5">
+                  <button className="btn bg-purple-600 border-none text-white hover:bg-white hover:text-black rounded-full px-5">
                     {hero.primaryBtn}
                   </button>
 
@@ -140,7 +140,7 @@ export default function Hero() {
             onClick={() => setActive(index)}
             className={`transition-all duration-300 rounded-full ${
               active === index
-                ? "w-6 h-2 bg-primary"
+                ? "w-6 h-2 bg-purple-600"
                 : "w-2 h-2 bg-white/60"
             }`}
           />

@@ -103,7 +103,7 @@ export default function ProductCard({
           ${
             isInCart(product.id)
               ? "btn-success"
-              : "btn-primary"
+              : "bg-purple-500 text-white"
           }
         `}
       >

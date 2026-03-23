@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className="space-y-8">
       {/* HERO SECTION */}
-      <section className="min-h-[70vh] flex flex-col justify-center items-center text-center px-4">
+      <section className="min-h-[70vh] flex flex-col justify-center items-center text-center px-4 container mx-auto">
         <Hero />
       </section>
       {/* Blog marquee what's on trending */}
@@ -16,14 +16,14 @@ const Home = () => {
         <BlogMarquee />
       </section>
 
-      {/* FEATURES */}
-      <section className="container mx-auto px-4">
-        <FeaturedProducts/>
+      {/* FEATURED Products */}
+      <section className=" bg-purple-100/30 min-w-full">
+        <FeaturedProducts />
       </section>
 
-      {/* TECH STACK */}
-      <section className="bg-base-200 py-20">
-        <FeatureHighlights/>
+      {/* Feature */}
+      <section className="py-3 rounded-2xl">
+        <FeatureHighlights />
       </section>
 
       {/* CTA */}

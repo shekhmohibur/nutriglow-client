@@ -18,7 +18,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Shop", path: "/shop" },
+    { name: "Shop", path: "/" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
   ];
@@ -48,8 +48,8 @@ const Navbar = () => {
               to={link.path}
               className={({ isActive }) =>
                 isActive
-                  ? "text-blue-500 font-semibold border-b-2 border-blue-500"
-                  : "text-gray-700 hover:text-blue-500 transition-colors"
+                  ? "text-purple-500 font-semibold border-b-2 border-purple-500 transition-all duration-300 ease-in-out transform scale-x-100"
+                  : "text-gray-700 hover:text-purple-500 transition-colors duration-300 ease-in-out"
               }
             >
               {link.name}
@@ -69,7 +69,7 @@ const Navbar = () => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-4 relative">
+        <div className="flex gap-2 items-center  relative">
           {/* Search */}
           <div ref={searchRef} className="relative flex items-center">
             <button
@@ -84,7 +84,7 @@ const Navbar = () => {
               className={`transition-all duration-300 ease-in-out border border-gray-300 rounded-md px-2 py-1 ml-2 outline-none
                 ${
                   isSearchOpen
-                    ? "w-48 opacity-100"
+                    ? "w-32 md:w-48 opacity-100"
                     : "w-0 opacity-0 overflow-hidden p-0 border-0"
                 }`}
             />

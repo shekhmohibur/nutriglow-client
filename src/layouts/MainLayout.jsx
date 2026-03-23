@@ -6,7 +6,7 @@ const MainLayout = () => {
   return (
     <div className="flex flex-col min-h-screen bg-base-100">
       <Navbar />
-      <main className="grow container mx-auto px-4 py-10">
+      <main className="flex-1 py-10">
         <Outlet />
       </main>
       <Footer />

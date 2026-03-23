@@ -2,7 +2,7 @@ import Marquee from "react-fast-marquee";
 
 export default function BlogMarquee() {
   return (
-    <div className="bg-cyan-800 text-white py-4 text-sm font-medium">
+    <div className="bg-purple-800 text-white py-4 text-sm font-medium rounded-2xl">
       <Marquee
         speed={60}
         pauseOnHover={true}
