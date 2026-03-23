@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "title": "Full Mágicas Noches",
+    "price": 29,
+    "category": "Sleep",
+    "rating": 5,
+    "reviews": 128,
+    "badge": "",
+    "image": "/images/products/sleep.webp",
+    "description": "Promotes deep sleep and relaxation. Sugar-free formula."
+  },
+  {
+    "id": 2,
+    "title": "Full Immunity",
+    "price": 24,
+    "category": "Immunity",
+    "rating": 5,
+    "reviews": 120,
+    "badge": "Best Seller",
+    "image": "/images/products/immunity.webp",
+    "description": "Supports immune system with vitamins and antioxidants."
+  },
+  {
+    "id": 3,
+    "title": "Full Collageno",
+    "price": 26,
+    "category": "Skin",
+    "rating": 5,
+    "reviews": 120,
+    "badge": "",
+    "image": "/images/products/collagen.webp",
+    "description": "Supports skin elasticity and hair strength."
+  },
+  {
+    "id": 4,
+    "title": "Full Gummies",
+    "price": 19,
+    "category": "Energy",
+    "rating": 4,
+    "reviews": 100,
+    "badge": "",
+    "image": "/images/products/gummies.webp",
+    "description": "Delicious daily vitamins for energy boost."
+  }
+]
