@@ -1,0 +1,50 @@
+[
+  {
+    "label": "Overview",
+    "path": "/dashboard",
+    "icon": "home",
+    "roles": ["admin", "user"]
+  },
+  {
+    "label": "Products",
+    "path": "/dashboard/products",
+    "icon": "box",
+    "roles": ["admin"]
+  },
+  {
+    "label": "Add Product",
+    "path": "/dashboard/add-product",
+    "icon": "plus",
+    "roles": ["admin"]
+  },
+  {
+    "label": "Orders",
+    "path": "/dashboard/orders",
+    "icon": "cart",
+    "roles": ["admin"]
+  },
+  {
+    "label": "Customers",
+    "path": "/dashboard/customers",
+    "icon": "users",
+    "roles": ["admin"]
+  },
+  {
+    "label": "Blog Posts",
+    "path": "/dashboard/blog",
+    "icon": "edit",
+    "roles": ["admin"]
+  },
+  {
+    "label": "Analytics",
+    "path": "/dashboard/analytics",
+    "icon": "chart",
+    "roles": ["admin"]
+  },
+  {
+    "label": "Settings",
+    "path": "/dashboard/settings",
+    "icon": "settings",
+    "roles": ["admin", "user"]
+  }
+]

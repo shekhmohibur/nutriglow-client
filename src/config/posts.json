@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "title": "How to Improve Sleep Naturally",
+    "slug": "improve-sleep-naturally",
+    "category": "Sleep",
+    "date": "March 18, 2026",
+    "author": "Dr. Sarah Lee",
+    "image": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+    "content": "Sleep plays a crucial role in maintaining mental and physical health. Poor sleep can reduce productivity, increase stress levels, and negatively impact your immune system.\n\nTo improve sleep naturally, create a consistent bedtime routine. Going to sleep and waking up at the same time daily helps regulate your body clock.\n\nNatural supplements such as magnesium and melatonin may help relax the nervous system and promote deeper sleep. Reducing screen exposure before bedtime also improves melatonin production.\n\nRegular exercise, a calm environment, and limiting caffeine intake after evening hours can significantly improve sleep quality."
+  },
+  {
+    "id": 2,
+    "title": "Collagen Benefits for Skin Health",
+    "slug": "collagen-benefits",
+    "category": "Skin",
+    "date": "March 10, 2026",
+    "author": "Dr. John Smith",
+    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9",
+    "content": "Collagen is the most abundant protein in the human body and plays an important role in maintaining skin elasticity and hydration.\n\nAs we age, collagen production decreases which leads to wrinkles and dry skin. Supplementing collagen may improve skin smoothness and support a youthful appearance.\n\nVitamin C, zinc, and amino acids help boost natural collagen production. Combining collagen supplements with a healthy skincare routine can produce better long-term results."
+  },
+  {
+    "id": 3,
+    "title": "Boost Energy Naturally Without Coffee",
+    "slug": "boost-energy-naturally",
+    "category": "Energy",
+    "date": "March 5, 2026",
+    "author": "Dr. Emily Carter",
+    "image": "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
+    "content": "Many people rely on caffeine for energy, but there are healthier ways to stay energized throughout the day.\n\nEating balanced meals with protein and complex carbohydrates helps maintain stable blood sugar levels.\n\nSupplements like B-complex vitamins and adaptogenic herbs may support natural energy production.\n\nProper hydration, regular movement, and good sleep patterns can significantly improve daily energy levels."
+  },
+  {
+    "id": 4,
+    "title": "Best Vitamins for Strong Immunity",
+    "slug": "best-vitamins-for-immunity",
+    "category": "Immunity",
+    "date": "February 25, 2026",
+    "author": "Dr. Michael Lee",
+    "image": "https://images.unsplash.com/photo-1584515933487-779824d29309",
+    "content": "A strong immune system helps protect the body from illness and infection. Essential vitamins like Vitamin C, Vitamin D, and Zinc play an important role in immune health.\n\nVitamin C supports white blood cell function, while Vitamin D helps regulate immune responses.\n\nA balanced diet rich in fruits, vegetables, and nutrients combined with proper supplementation can strengthen immunity and improve overall health."
+  },
+  {
+    "id": 5,
+    "title": "Daily Habits for Better Mental Health",
+    "slug": "daily-habits-for-mental-health",
+    "category": "Wellness",
+    "date": "February 15, 2026",
+    "author": "Dr. Olivia Brown",
+    "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773",
+    "content": "Mental health is just as important as physical health. Practicing mindfulness, meditation, and gratitude can improve emotional balance.\n\nRegular exercise releases endorphins which help reduce stress and anxiety.\n\nMaintaining social connections and limiting screen time can also improve mental well-being.\n\nHealthy daily habits lead to improved focus, productivity, and happiness."
+  },
+  {
+    "id": 6,
+    "title": "Why Hydration is Important for Skin",
+    "slug": "hydration-for-skin-health",
+    "category": "Skin",
+    "date": "February 8, 2026",
+    "author": "Dr. Sophia Green",
+    "image": "https://images.unsplash.com/photo-1526045612212-70caf35c14df",
+    "content": "Hydration plays an essential role in maintaining healthy and glowing skin. Drinking enough water helps maintain skin elasticity and prevents dryness.\n\nProper hydration also helps flush toxins from the body, improving skin clarity.\n\nUsing hydrating skincare products along with drinking sufficient water daily can significantly improve skin health and appearance."
+  }
+]

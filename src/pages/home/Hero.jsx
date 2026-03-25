@@ -40,13 +40,10 @@ export default function Hero() {
   // --------------------
   // NAVIGATION
   // --------------------
-  const nextSlide = () =>
-    setActive((prev) => (prev + 1) % heroData.length);
+  const nextSlide = () => setActive((prev) => (prev + 1) % heroData.length);
 
   const prevSlide = () =>
-    setActive((prev) =>
-      prev === 0 ? heroData.length - 1 : prev - 1
-    );
+    setActive((prev) => (prev === 0 ? heroData.length - 1 : prev - 1));
 
   // --------------------
   // SWIPE SUPPORT
@@ -107,7 +104,6 @@ export default function Hero() {
           <div className="absolute inset-0 flex items-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
               <div className="max-w-xl text-white space-y-4 sm:space-y-6">
-
                 <h1 className="text-2xl text-start sm:text-4xl md:text-5xl lg:text-6xl font-heading font-semibold leading-tight">
                   {hero.title}
                 </h1>
@@ -125,7 +121,6 @@ export default function Hero() {
                     {hero.secondaryBtn}
                   </button>
                 </div>
-
               </div>
             </div>
           </div>
@@ -139,9 +134,7 @@ export default function Hero() {
             key={index}
             onClick={() => setActive(index)}
             className={`transition-all duration-300 rounded-full ${
-              active === index
-                ? "w-6 h-2 bg-purple-600"
-                : "w-2 h-2 bg-white/60"
+              active === index ? "w-6 h-2 bg-purple-600" : "w-2 h-2 bg-white/60"
             }`}
           />
         ))}

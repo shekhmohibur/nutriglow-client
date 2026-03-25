@@ -1,8 +1,9 @@
-import { Link } from "react-router";
 import Hero from "./Hero";
 import BlogMarquee from "../../components/common/BlogMarquee";
 import FeaturedProducts from "./FeaturedProducts";
 import FeatureHighlights from "../../components/common/FeatureHighlights";
+import BlogPost from "./BlogPost";
+import TrustFeatures from "../../components/shared/Fearures";
 
 const Home = () => {
   return (
@@ -27,18 +28,12 @@ const Home = () => {
       </section>
 
       {/* CTA */}
-      <section className="container mx-auto px-4 text-center pb-20">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Ready to Build Something Real?
-        </h2>
-        <p className="text-gray-500 max-w-xl mx-auto mb-8">
-          Start with a solid foundation instead of reinventing the wheel every
-          time.
-        </p>
-
-        <Link to="/register" className="btn btn-primary btn-wide">
-          Create Account
-        </Link>
+      <section className="container mx-auto px-4 text-center">
+        <BlogPost/>
+      </section>
+      {/* shopp Look slider */}
+      <section className="bg-base-200 pt-4"> 
+        <TrustFeatures/>
       </section>
     </div>
   );
