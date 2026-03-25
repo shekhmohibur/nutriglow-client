@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { FaRegUser, FaBars, FaTimes } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 import { IoBagOutline } from "react-icons/io5";
@@ -9,12 +9,17 @@ import useClickOutside from "../../hooks/useClickOutside";
 
 const Navbar = () => {
   const { user, logoutUser } = useAuth();
+  const navigate = useNavigate();
+
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [cartCount, setCartCount] = useState(3); // example cart items count
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [cartCount] = useState(3);
+
   const searchRef = useRef(null);
   const menuRef = useRef(null);
+  const profileRef = useRef(null);
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -24,32 +29,37 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
-    const handleScroll = () => setIsSticky(window.scrollY > 80);
+    const handleScroll = () => setIsSticky(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  // search auto close
+
   useClickOutside(searchRef, () => setIsSearchOpen(false));
-  // hamburger menu auto close
   useClickOutside(menuRef, () => setIsMobileMenuOpen(false));
+  useClickOutside(profileRef, () => setIsProfileOpen(false));
 
   return (
     <header
-      className={`w-full fixed top-0 left-0 z-50 transition-all bg-white ${
-        isSticky ? "shadow-md py-2" : "py-4"
-      } ${!isSticky && "border-b border-gray-200"}`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300
+      ${
+        isSticky
+          ? "bg-white/80 backdrop-blur-md shadow-sm py-2"
+          : "bg-white py-4 border-b-2 border-gray-200"
+      }`}
     >
-      <div className="w-11/12 mx-auto flex items-center justify-between relative">
+      <div className="w-11/12 mx-auto flex items-center justify-between">
         {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-6 items-center">
-          {navLinks.map((link, index) => (
+        <nav className="hidden md:flex gap-8">
+          {navLinks.map((link) => (
             <NavLink
-              key={index}
+              key={link.name}
               to={link.path}
               className={({ isActive }) =>
-                isActive
-                  ? "text-purple-500 font-semibold border-b-2 border-purple-500 transition-all duration-300 ease-in-out transform scale-x-100"
-                  : "text-gray-700 hover:text-purple-500 transition-colors duration-300 ease-in-out"
+                `relative font-medium transition ${
+                  isActive
+                    ? "text-purple-600"
+                    : "text-gray-700 hover:text-purple-500"
+                }`
               }
             >
               {link.name}
@@ -58,92 +68,143 @@ const Navbar = () => {
         </nav>
 
         {/* Logo */}
-        <div className="w-16 h-16 shrink-0 ">
-          <Link to="/">
-            <img
-              src={logo}
-              alt="NutriGlow logo"
-              className="object-cover w-full h-full rounded-full pointer-events-none"
-            />
-          </Link>
-        </div>
+        <Link to="/" className="w-14 h-14">
+          <img
+            src={logo}
+            alt="logo"
+            className="w-full h-full object-cover rounded-full"
+          />
+        </Link>
 
-        {/* Action Buttons */}
-        <div className="flex gap-2 items-center  relative">
+        {/* Right Side */}
+        <div className="flex items-center gap-3">
           {/* Search */}
           <div ref={searchRef} className="relative flex items-center">
             <button
-              className="cursor-pointer p-2 rounded-full hover:bg-gray-100 transition"
+              aria-label="Search"
               onClick={() => setIsSearchOpen((prev) => !prev)}
+              className="p-2 rounded-full hover:bg-gray-100"
             >
-              <IoMdSearch size={22} className={`${isSearchOpen && "hidden"}`} />
+              <IoMdSearch size={20} />
             </button>
+
             <input
-              type="text"
-              placeholder="Search..."
-              className={`transition-all duration-300 ease-in-out border border-gray-300 rounded-md px-2 py-1 ml-2 outline-none
-                ${
-                  isSearchOpen
-                    ? "w-32 md:w-48 opacity-100"
-                    : "w-0 opacity-0 overflow-hidden p-0 border-0"
-                }`}
+              autoFocus={isSearchOpen}
+              placeholder="Search products..."
+              className={`absolute right-10 transition-all duration-300
+              border rounded-md px-3 py-1 outline-none bg-white shadow
+              ${
+                isSearchOpen
+                  ? "w-40 md:w-56 opacity-100"
+                  : "w-0 opacity-0 pointer-events-none"
+              }`}
             />
           </div>
 
-          {/* User Link */}
-          <Link
-            to={"/login"}
-            className="cursor-pointer p-2 rounded-full hover:bg-gray-100 transition"
+          {/* Cart */}
+          <button
+            aria-label="Cart"
+            className="relative p-2 rounded-full hover:bg-gray-100"
           >
-            <FaRegUser size={22} />
-          </Link>
-
-          {/* Shopping cart with indicator */}
-          <div className="relative">
-            <button className="cursor-pointer p-2 rounded-full hover:bg-gray-100 transition">
-              <IoBagOutline size={22} />
-            </button>
+            <IoBagOutline size={22} />
             {cartCount > 0 && (
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full animate-pulse">
+              <span className="absolute -top-1 -right-1 bg-purple-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
                 {cartCount}
               </span>
             )}
-          </div>
+          </button>
 
-          {/* Mobile hamburger */}
+          {/* Profile */}
+          <div ref={profileRef} className="relative">
+            <button
+              onClick={() => setIsProfileOpen((prev) => !prev)}
+              className="p-2 rounded-full hover:bg-gray-100 transition"
+            >
+              <FaRegUser size={20} />
+            </button>
+
+            {isProfileOpen && (
+              <div className="absolute right-0 mt-3 w-44 bg-white border border-gray-100 rounded-xl shadow-lg py-2 animate-fadeIn">
+                {user ? (
+                  <>
+                    <button
+                      onClick={() => navigate("/profile")}
+                      className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50"
+                    >
+                      My Profile
+                    </button>
+
+                    <button
+                      onClick={() => navigate("/orders")}
+                      className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50"
+                    >
+                      My Orders
+                    </button>
+
+                    <button
+                      onClick={() => navigate("/wishlist")}
+                      className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50"
+                    >
+                      Wishlist
+                    </button>
+
+                    <div className="border-t my-1"></div>
+
+                    <button
+                      onClick={logoutUser}
+                      className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-50"
+                    >
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    onClick={() => navigate("/login")}
+                    className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50"
+                  >
+                    Login
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+          {/* Mobile Menu Button */}
           <button
-            className="md:hidden cursor-pointer p-2 rounded hover:bg-gray-100 transition"
+            className="md:hidden p-2"
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
           >
-            {isMobileMenuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+            {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div
-          ref={menuRef}
-          className={`md:hidden ${
-            !isSticky && "shadow-md"
-          } bg-white w-full mt-2 rounded-b-lg animate__animated animate__fadeInDown`}
-        >
-          <nav className="flex flex-col items-center py-4 gap-4">
-            {navLinks.map((link, index) => (
-              <NavLink
-                key={index}
-                to={link.path}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={({ isActive }) =>
-                  isActive
-                    ? "text-blue-500 font-semibold border-b-2 border-blue-500"
-                    : "text-gray-700 hover:text-blue-500 transition-colors"
-                }
-              >
-                {link.name}
-              </NavLink>
-            ))}
-          </nav>
+        <div className="md:hidden absolute top-full left-0 w-full flex justify-center mt-2">
+          <div
+            ref={menuRef}
+            className="w-11/12 bg-white rounded-2xl shadow-xl border border-gray-100 py-4 animate-fadeIn"
+          >
+            <nav className="flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.name}
+                  to={link.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `mx-4 px-4 py-3 rounded-lg text-sm font-medium transition
+              ${
+                isActive
+                  ? "bg-purple-50 text-purple-600"
+                  : "text-gray-700 hover:bg-gray-50"
+              }`
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              ))}
+            </nav>
+          </div>
         </div>
       )}
     </header>

@@ -8,7 +8,7 @@ import Contact from "../pages/contact/Contact";
 import Login from "../pages/authentication/Login";
 import Register from "../pages/authentication/Register";
 import Dashboard from "../pages/dashboard/Dashboard";
-import About from "../pages/home/About";
+import About from "../pages/about/About";
 import BlogDetails from "../pages/home/BlogDetails";
 import ErrorPage from "../pages/error/ErrorPage";
 import RoleRoute from "./RoleRoute";
