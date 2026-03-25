@@ -1,123 +1,94 @@
-import { FaHeart } from "react-icons/fa";
-import RatingStars from "./RatingStars";
-import { useCart } from "../../context/CartContext";
-import { useWishlist } from "../../context/WishlistContext";
-export default function ProductCard({
-  product,
-  openModal
-}) {
+import { Link } from "react-router";
+import { FaStar, FaShoppingCart } from "react-icons/fa";
 
-  const { addToCart, isInCart } = useCart();
-  const {
-    toggleWishlist,
-    isWishlisted
-  } = useWishlist();
+const ProductCard = ({ product }) => {
 
   return (
 
-    <div className="
-      group
-      bg-base-100
-      shadow-md
-      rounded-xl
-      p-4
-      transition
-      hover:shadow-xl
-      hover:-translate-y-1
-    ">
+    <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition group">
 
       {/* image */}
-      <div className="relative">
+      <div className="overflow-hidden">
 
         <img
           src={product.image}
-          alt={product.title}
-          className="
-            rounded-lg
-            mb-3
-            transition
-            group-hover:scale-105
-          "
-          onClick={() => openModal(product)}
+          className="w-full h-56 object-cover group-hover:scale-105 transition"
         />
-
-        {/* wishlist */}
-        <button
-          onClick={() => toggleWishlist(product)}
-          className="
-            absolute top-2 right-2
-            bg-white/80
-            p-2 rounded-full
-          "
-        >
-
-          <FaHeart
-            className={
-              isWishlisted(product.id)
-                ? "text-red-500"
-                : "text-gray-300"
-            }
-          />
-
-        </button>
-
-        {/* badge */}
-        {product.badge && (
-
-          <span className="
-            absolute top-2 left-2
-            badge badge-primary
-          ">
-            {product.badge}
-          </span>
-
-        )}
 
       </div>
 
-      {/* title */}
-      <h3
-        onClick={() => openModal(product)}
-        className="
-          font-semibold
-          text-lg
-          cursor-pointer
-          hover:text-primary
-        "
-      >
-        {product.title}
-      </h3>
 
-      {/* rating */}
-      <RatingStars rating={product.rating} />
+      {/* info */}
+      <div className="p-4 space-y-2">
 
-      <p className="font-semibold text-lg mt-1">
-        ${product.price}
-      </p>
+        <p className="text-xs text-gray-400">
 
-      {/* button */}
-      <button
-        onClick={() => addToCart(product)}
-        className={`
-          btn w-full mt-3 rounded-full
-          ${
-            isInCart(product.id)
-              ? "btn-success"
-              : "bg-purple-500 text-white"
-          }
-        `}
-      >
+          {product.category}
 
-        {
-          isInCart(product.id)
-            ? "Added"
-            : "Add to Cart"
-        }
+        </p>
 
-      </button>
+
+        <h3 className="font-semibold">
+
+          {product.name}
+
+        </h3>
+
+
+        {/* rating */}
+        <div className="flex items-center gap-1 text-yellow-500 text-xs">
+
+          <FaStar />
+          <FaStar />
+          <FaStar />
+          <FaStar />
+          <FaStar />
+
+          <span className="text-gray-400 ml-2">
+
+            (4.9)
+
+          </span>
+
+        </div>
+
+
+        {/* price */}
+        <div className="flex justify-between items-center mt-2">
+
+          <span className="font-bold">
+
+            ${product.price}
+
+          </span>
+
+
+          <button className="btn btn-sm btn-primary flex items-center gap-1">
+
+            <FaShoppingCart size={16}/>
+
+            Add
+
+          </button>
+
+        </div>
+
+
+        <Link
+          to={`/product/${product.slug}`}
+          className="text-xs text-primary hover:underline"
+        >
+
+          View Details
+
+        </Link>
+
+      </div>
 
     </div>
 
   );
 
-}
+};
+
+export default ProductCard;

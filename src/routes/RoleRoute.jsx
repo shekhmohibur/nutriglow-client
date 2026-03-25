@@ -1,14 +1,15 @@
 import { Navigate } from "react-router";
 import useAuth from "../hooks/useAuth";
+import Loader from "../components/shared/Loader";
 
 
 const RoleRoute = ({ allow, children }) => {
 
   const { user, loading } = useAuth();
-const role = 'admin';
+const role = 'user';
   if (loading) {
 
-    return <p>Loading...</p>;
+    return <Loader fullScreen={false} />;
 
   }
 

@@ -5,42 +5,70 @@
     "icon": "home",
     "roles": ["admin", "user"]
   },
+
+  {
+    "label": "My Orders",
+    "path": "/dashboard/my-orders",
+    "icon": "cart",
+    "roles": ["user"]
+  },
+
+  {
+    "label": "Wishlist",
+    "path": "/dashboard/wishlist",
+    "icon": "heart",
+    "roles": ["user"]
+  },
+
+  {
+    "label": "Profile",
+    "path": "/dashboard/profile",
+    "icon": "user",
+    "roles": ["user"]
+  },
+
   {
     "label": "Products",
     "path": "/dashboard/products",
     "icon": "box",
     "roles": ["admin"]
   },
+
   {
     "label": "Add Product",
     "path": "/dashboard/add-product",
     "icon": "plus",
     "roles": ["admin"]
   },
+
   {
     "label": "Orders",
     "path": "/dashboard/orders",
     "icon": "cart",
     "roles": ["admin"]
   },
+
   {
     "label": "Customers",
     "path": "/dashboard/customers",
     "icon": "users",
     "roles": ["admin"]
   },
+
   {
-    "label": "Blog Posts",
+    "label": "Blog",
     "path": "/dashboard/blog",
     "icon": "edit",
     "roles": ["admin"]
   },
+
   {
     "label": "Analytics",
     "path": "/dashboard/analytics",
     "icon": "chart",
     "roles": ["admin"]
   },
+
   {
     "label": "Settings",
     "path": "/dashboard/settings",

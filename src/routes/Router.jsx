@@ -4,7 +4,7 @@ import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 import Home from "../pages/home/Home";
 import Services from "../pages/home/Services";
-import Contact from "../pages/home/Contact";
+import Contact from "../pages/contact/Contact";
 import Login from "../pages/authentication/Login";
 import Register from "../pages/authentication/Register";
 import Dashboard from "../pages/dashboard/Dashboard";
@@ -22,6 +22,8 @@ import Overview from "../pages/dashboard/pages/Overview";
 import AddProduct from "../pages/dashboard/pages/AddProduct";
 import Customers from "../pages/dashboard/pages/Customers";
 import CartPage from "../pages/home/CartPage";
+import Shop from "../pages/shop/Shop";
+import MyOrders from "../pages/dashboard/pages/MyOrders";
 
 const Router = createBrowserRouter([
   {
@@ -34,6 +36,7 @@ const Router = createBrowserRouter([
       { path: "about", Component: About },
       { path: "contact", Component: Contact },
       { path: "cart", Component: CartPage },
+      { path: "shop", Component: Shop },
 
       // 🔓 Public-only routes
       {
@@ -132,10 +135,17 @@ const Router = createBrowserRouter([
       },
       {
         path: "customers",
-
         Component: () => (
           <RoleRoute allow={["admin", "user"]}>
             <Customers />
+          </RoleRoute>
+        ),
+      },
+      {
+        path: "my-orders",
+        Component: () => (
+          <RoleRoute allow={["user"]}>
+            <MyOrders />
           </RoleRoute>
         ),
       },
