@@ -3,9 +3,9 @@ import { FaRegUser, FaBars, FaTimes } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 import { IoBagOutline } from "react-icons/io5";
 import { IoMdSearch } from "react-icons/io";
-import useAuth from "../../hooks/useAuth";
 import logo from "../../assets/logo.webp";
 import useClickOutside from "../../hooks/useClickOutside";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
   const { user, logoutUser } = useAuth();
@@ -103,8 +103,9 @@ const Navbar = () => {
 
           {/* Cart */}
           <button
+            onClick={() => navigate("/cart")}
             aria-label="Cart"
-            className="relative p-2 rounded-full hover:bg-gray-100"
+            className="relative p-2 rounded-full hover:bg-gray-100 cursor-pointer"
           >
             <IoBagOutline size={22} />
             {cartCount > 0 && (
