@@ -119,7 +119,7 @@ const Navbar = () => {
           <div ref={profileRef} className="relative">
             <button
               onClick={() => setIsProfileOpen((prev) => !prev)}
-              className="p-2 rounded-full hover:bg-gray-100 transition"
+              className="p-2 rounded-full hover:bg-gray-100 transition cursor-pointer"
             >
               <FaRegUser size={20} />
             </button>
@@ -130,21 +130,21 @@ const Navbar = () => {
                   <>
                     <button
                       onClick={() => navigate("/profile")}
-                      className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50"
+                      className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer"
                     >
                       My Profile
                     </button>
 
                     <button
                       onClick={() => navigate("/orders")}
-                      className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50"
+                      className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer"
                     >
                       My Orders
                     </button>
 
                     <button
                       onClick={() => navigate("/wishlist")}
-                      className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50"
+                      className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer"
                     >
                       Wishlist
                     </button>
@@ -153,7 +153,7 @@ const Navbar = () => {
 
                     <button
                       onClick={logoutUser}
-                      className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-50"
+                      className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-50 cursor-pointer"
                     >
                       Logout
                     </button>

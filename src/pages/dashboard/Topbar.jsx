@@ -16,7 +16,7 @@ const Topbar = ({ setOpen }) => {
         {/* mobile menu btn */}
         <button
           onClick={() => setOpen(prev => !prev)}
-          className="lg:hidden text-lg"
+          className="lg:hidden text-lg cursor-pointer"
         >
           <FaBars />
         </button>

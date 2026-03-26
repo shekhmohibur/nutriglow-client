@@ -1,8 +1,9 @@
-import { Navigate, Outlet } from "react-router";
+import { Navigate, Outlet, useLocation } from "react-router";
 import useAuth from "../hooks/useAuth";
 
 const PublicRoute = () => {
   const { user, loading } = useAuth();
+  const location = useLocation();
 
   if (loading) {
     return (
@@ -11,8 +12,10 @@ const PublicRoute = () => {
       </div>
     );
   }
+  // if user is logged in, go back to where they tried before
+  const from = location.state?.from?.pathname || "/dashboard";
 
-  return user ? <Navigate to="/dashboard" replace /> : <Outlet />;
+  return user ? <Navigate to={from} replace /> : <Outlet />;
 };
 
 export default PublicRoute;
