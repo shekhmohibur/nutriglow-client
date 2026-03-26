@@ -7,10 +7,11 @@ import logo from "../../assets/logo.webp";
 import useClickOutside from "../../hooks/useClickOutside";
 import useAuth from "../../hooks/useAuth";
 
-const Navbar = () => {
+const Navbar = ({ userData }) => {
   const { user, logoutUser } = useAuth();
   const navigate = useNavigate();
-
+  console.log(userData);
+  
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -133,6 +134,12 @@ const Navbar = () => {
                       className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer"
                     >
                       My Profile
+                    </button>
+                    <button
+                      onClick={() => navigate("/dashboard")}
+                      className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${userData?.role === 'user' && 'hidden'}`}
+                    >
+                      Dashboard
                     </button>
 
                     <button
