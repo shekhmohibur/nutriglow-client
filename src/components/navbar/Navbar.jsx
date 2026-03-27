@@ -78,13 +78,13 @@ const Navbar = ({ userData }) => {
         </Link>
 
         {/* Right Side */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center">
           {/* Search */}
-          <div ref={searchRef} className="relative flex items-center">
+          <div ref={searchRef} className={`relative flex items-center`}>
             <button
               aria-label="Search"
               onClick={() => setIsSearchOpen((prev) => !prev)}
-              className="p-2 rounded-full hover:bg-gray-100"
+              className={`p-2 rounded-full hover:bg-gray-100 ${isSearchOpen && 'hidden'}`}
             >
               <IoMdSearch size={20} />
             </button>
@@ -92,7 +92,7 @@ const Navbar = ({ userData }) => {
             <input
               autoFocus={isSearchOpen}
               placeholder="Search products..."
-              className={`absolute right-10 transition-all duration-300
+              className={`absolute right-3 transition-all duration-300
               border rounded-md px-3 py-1 outline-none bg-white shadow
               ${
                 isSearchOpen
