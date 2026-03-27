@@ -9,7 +9,7 @@
   {
     "label": "My Orders",
     "path": "/dashboard/my-orders",
-    "icon": "cart",
+    "icon": "user",
     "roles": ["user"]
   },
 
@@ -18,6 +18,13 @@
     "path": "/dashboard/wishlist",
     "icon": "heart",
     "roles": ["user"]
+  },
+
+  {
+    "label": "Profile",
+    "path": "/dashboard/profile",
+    "icon": "user",
+    "roles": ["user", "admin"]
   },
 
   {

@@ -9,6 +9,7 @@ import {
   FaChartBar,
   FaCog,
   FaUsers,
+  FaUser,
   FaHeart,
 } from "react-icons/fa";
 
@@ -17,6 +18,7 @@ const icons = {
   box: <FaBox />,
   plus: <FaPlus />,
   cart: <FaShoppingCart />,
+  user:<FaUser/>,
   heart:<FaHeart/>,
   users: <FaUsers />,
   edit: <FaPen />,

@@ -3,7 +3,6 @@ import MainLayout from "../layouts/MainLayout";
 import DashboardLayout from "../layouts/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
-import RoleRoute from "./RoleRoute";
 
 // Public pages
 import Home from "../pages/home/Home";
@@ -25,10 +24,11 @@ import Orders from "../pages/dashboard/pages/Orders";
 import Customers from "../pages/dashboard/pages/Customers";
 import MyOrders from "../pages/dashboard/pages/MyOrders";
 import Profile from "../pages/dashboard/pages/Profile";
-import Settings from "../pages/dashboard/pages/Settings";
 import Analytics from "../pages/dashboard/pages/Analytics";
 import DblogPosts from "../pages/dashboard/pages/DblogPosts";
 import Wishlist from "../pages/dashboard/pages/Wishlist";
+import AdminRoute from "./AdminRoute";
+import Settings from "../pages/dashboard/pages/Settings";
 
 const Router = createBrowserRouter([
   {
@@ -55,7 +55,10 @@ const Router = createBrowserRouter([
       // Private non-dashboard
       {
         element: <PrivateRoute />,
-        children: [{ path: "blog/:slug", element: <BlogDetails /> },{ path: "profile", element: <Profile /> }],
+        children: [
+          { path: "blog/:slug", element: <BlogDetails /> },
+          { path: "profile", element: <Profile /> },
+        ],
       },
     ],
   },
@@ -63,18 +66,104 @@ const Router = createBrowserRouter([
   // Dashboard
   {
     path: "/dashboard",
-    Component:DashboardLayout,
+
+    Component: DashboardLayout,
+
     children: [
-      { index: true, element: <RoleRoute allow={["admin", "user"]}><Overview /></RoleRoute> },
-      { path: "customers", element: <RoleRoute allow={["admin"]}><Customers /></RoleRoute> },
-      { path: "products", element: <RoleRoute allow={["admin"]}><Products /></RoleRoute> },
-      { path: "add-product", element: <RoleRoute allow={["admin"]}><AddProduct /></RoleRoute> },
-      { path: "orders", element: <RoleRoute allow={["admin"]}><Orders /></RoleRoute> },
-      { path: "wishlist", element: <RoleRoute allow={["admin", "user"]}><Wishlist /></RoleRoute> },
-      { path: "my-orders", element: <RoleRoute allow={["user"]}><MyOrders /></RoleRoute> },
-      { path: "blog", element: <RoleRoute allow={["admin"]}><DblogPosts /></RoleRoute> },
-      { path: "analytics", element: <RoleRoute allow={["admin"]}><Analytics /></RoleRoute> },
-      { path: "settings", element: <RoleRoute allow={["admin","user"]}><Settings /></RoleRoute> },
+      {
+        index: true,
+
+        element: (
+          <PrivateRoute>
+            <Overview />
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "customers",
+
+        element: (
+          <AdminRoute>
+            <Customers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "profile",
+
+        element: (
+          <AdminRoute>
+            <Profile />
+          </AdminRoute>
+        ),
+      },
+
+      {
+        path: "products",
+
+        element: (
+          <AdminRoute>
+            <Products />
+          </AdminRoute>
+        ),
+      },
+
+      {
+        path: "add-product",
+
+        element: (
+          <AdminRoute>
+            <AddProduct />
+          </AdminRoute>
+        ),
+      },
+
+      {
+        path: "orders",
+
+        element: (
+          <AdminRoute>
+            <Orders />
+          </AdminRoute>
+        ),
+      },
+
+      {
+        path: "blog",
+
+        element: (
+          <AdminRoute>
+            <DblogPosts />
+          </AdminRoute>
+        ),
+      },
+
+      {
+        path: "analytics",
+
+        element: (
+          <AdminRoute>
+            <Analytics />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "my-orders",
+
+        element: (
+          <PrivateRoute>
+            <MyOrders />
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        element:<PrivateRoute/>,
+       children: [
+        {path:'settings', element:<Settings/>}
+       ]
+      },
     ],
   },
 ]);
