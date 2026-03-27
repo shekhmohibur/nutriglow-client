@@ -10,7 +10,6 @@ import useAuth from "../../hooks/useAuth";
 const Navbar = ({ userData }) => {
   const { user, logoutUser } = useAuth();
   const navigate = useNavigate();
-  console.log(userData);
   
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);

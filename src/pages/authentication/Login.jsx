@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import GoogleLogin from "../../components/shared/GoogleLogin";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { loginUser } = useAuth();
@@ -15,14 +16,64 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    loginUser(data.email, data.password)
-      .then(() => {
-        navigate(from, { replace: true });
-      })
+const onSubmit = async (data) => {
 
-      .catch((err) => alert(err.message));
-  };
+  try {
+
+    await loginUser(
+      data.email.toLowerCase().trim(),
+      data.password
+    );
+
+    Swal.fire({
+      icon: "success",
+      title: "Login successful",
+      timer: 1200,
+      showConfirmButton: false
+    });
+
+    navigate(from, { replace: true });
+
+  } catch (err) {
+
+    let message = "Something went wrong";
+
+    // user not registered
+    if (err.code === "auth/user-not-found") {
+      message = "No account found with this email";
+    }
+
+    // wrong password
+    else if (err.code === "auth/wrong-password") {
+      message = "Incorrect password";
+    }
+
+    // invalid email format
+    else if (err.code === "auth/invalid-email") {
+      message = "Invalid email format";
+    }
+
+    // too many attempts
+    else if (err.code === "auth/too-many-requests") {
+      message = "Too many attempts. Try again later";
+    }
+
+    // default fallback
+    else {
+      message = err.message;
+    }
+
+    Swal.fire({
+      icon: "error",
+      title: "Login Failed",
+      text: message
+    });
+
+    console.log(err);
+
+  }
+
+};
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-base-200 px-4">

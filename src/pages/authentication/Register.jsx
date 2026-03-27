@@ -27,40 +27,44 @@ const Register = () => {
     defaultValue: "",
   });
 
-  const onSubmit = (data) => {
+const onSubmit = async (data) => {
+  try {
     const userData = {
       displayName: data.name,
-      email: data.email.toLowerCase(),
+      email: data.email.toLowerCase().trim(),
       role: "user",
       createdAt: new Date(),
     };
-    registerUser(userData.email, password, userData.displayName)
-      .then(() => {
-        try {
-          axiosSecure
-            .post("/users", {
-              userData,
-            })
-            .then((res) => {
-              console.log(res.data.insertedId);
-              if (res.data.insertedId) {
-                Swal.fire({
-                  position: "center",
-                  icon: "success",
-                  title: "Registration Complete",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-              }
-            });
-        } catch (err) {
-          console.log(err);
-        }
-        navigate("/dashboard");
-      })
 
-      .catch((err) => alert(err.message));
-  };
+    // create firebase user
+    await registerUser(userData.email, password, userData.displayName);
+
+    // save user in DB
+    const res = await axiosSecure.post("/users", { userData });
+
+    if (res.data.insertedId) {
+      Swal.fire({
+        icon: "success",
+        title: "Registration Complete",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    }
+
+    navigate("/dashboard");
+
+  } catch (err) {
+     if (err.response?.status === 409) {
+
+      Swal.fire({
+        icon: "info",
+        title: "User already exists",
+        text: "Try logging in instead",
+      });
+      return;
+    }
+  }
+};
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-base-200 px-4">

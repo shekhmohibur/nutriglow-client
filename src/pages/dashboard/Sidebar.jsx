@@ -1,6 +1,5 @@
 import { Link, NavLink } from "react-router";
 import menu from "../../config/DashboardMenu.json";
-import logo from "../../assets/logo.webp";
 import {
   FaHome,
   FaBox,
@@ -23,8 +22,8 @@ const icons = {
   settings: <FaCog />,
 };
 
-const Sidebar = () => {
-  const user = { role: "admin" };
+const Sidebar = ({userData}) => {
+console.log(userData);
 
   return (
     <aside className="w-64 min-h-screen bg-white border-r border-base-200 flex flex-col">
@@ -40,7 +39,7 @@ const Sidebar = () => {
       {/* menu */}
       <nav className="flex-1 px-3 py-6 space-y-1">
         {menu
-          .filter((item) => item.roles.includes(user.role))
+          .filter((item) => item.roles.includes(userData?.role))
           .map((item) => (
             <NavLink
               key={item.path}
@@ -72,9 +71,9 @@ const Sidebar = () => {
           </div>
 
           <div>
-            <p className="text-sm font-medium">Admin User</p>
+            <p className="text-sm font-medium capitalize">{userData?.role}</p>
 
-            <p className="text-xs text-gray-400">admin@email.com</p>
+            <p className="text-xs text-gray-400">{userData?.email}</p>
           </div>
         </div>
       </div>
