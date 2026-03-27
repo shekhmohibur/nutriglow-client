@@ -7,7 +7,7 @@ import logo from "../../assets/logo.webp";
 import useClickOutside from "../../hooks/useClickOutside";
 import useAuth from "../../hooks/useAuth";
 
-const Navbar = ({ userData }) => {
+const Navbar = () => {
   const { user, logoutUser } = useAuth();
   const navigate = useNavigate();
   
@@ -136,7 +136,7 @@ const Navbar = ({ userData }) => {
                     </button>
                     <button
                       onClick={() => navigate("/dashboard")}
-                      className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer ${userData?.role === 'user' && 'hidden'}`}
+                      className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer `}
                     >
                       Dashboard
                     </button>
@@ -149,7 +149,7 @@ const Navbar = ({ userData }) => {
                     </button>
 
                     <button
-                      onClick={() => navigate("/wishlist")}
+                      onClick={() => navigate("/dashboard/wishlist")}
                       className="w-full text-left px-4 py-2 text-sm hover:bg-gray-50 cursor-pointer"
                     >
                       Wishlist

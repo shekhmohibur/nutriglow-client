@@ -5,10 +5,11 @@ import {
   FaBox,
   FaPlus,
   FaShoppingCart,
-  FaUsers,
   FaPen,
   FaChartBar,
   FaCog,
+  FaUsers,
+  FaHeart,
 } from "react-icons/fa";
 
 const icons = {
@@ -16,6 +17,7 @@ const icons = {
   box: <FaBox />,
   plus: <FaPlus />,
   cart: <FaShoppingCart />,
+  heart:<FaHeart/>,
   users: <FaUsers />,
   edit: <FaPen />,
   chart: <FaChartBar />,
@@ -23,7 +25,6 @@ const icons = {
 };
 
 const Sidebar = ({userData}) => {
-console.log(userData);
 
   return (
     <aside className="w-64 min-h-screen bg-white border-r border-base-200 flex flex-col">
@@ -55,10 +56,10 @@ console.log(userData);
               }
             >
               {/* icon */}
-              <span className="text-sm">{icons[item.icon]}</span>
+              <span className="text-sm">{icons[item?.icon]}</span>
 
               {/* label */}
-              <span className="text-sm font-medium">{item.label}</span>
+              <span className="text-sm font-medium">{item?.label}</span>
             </NavLink>
           ))}
       </nav>

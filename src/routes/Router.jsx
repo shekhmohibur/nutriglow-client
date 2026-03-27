@@ -1,154 +1,80 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../layouts/MainLayout";
+import DashboardLayout from "../layouts/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
+import RoleRoute from "./RoleRoute";
+
+// Public pages
 import Home from "../pages/home/Home";
 import Services from "../pages/home/Services";
+import About from "../pages/about/About";
 import Contact from "../pages/contact/Contact";
+import Shop from "../pages/shop/Shop";
+import CartPage from "../pages/home/CartPage";
 import Login from "../pages/authentication/Login";
 import Register from "../pages/authentication/Register";
-import Dashboard from "../pages/dashboard/Dashboard";
-import About from "../pages/about/About";
 import BlogDetails from "../pages/home/BlogDetails";
 import ErrorPage from "../pages/error/ErrorPage";
-import RoleRoute from "./RoleRoute";
+
+// Dashboard pages
+import Overview from "../pages/dashboard/pages/Overview";
+import Products from "../pages/dashboard/pages/Products";
+import AddProduct from "../pages/dashboard/pages/AddProduct";
+import Orders from "../pages/dashboard/pages/Orders";
+import Customers from "../pages/dashboard/pages/Customers";
+import MyOrders from "../pages/dashboard/pages/MyOrders";
+import Profile from "../pages/dashboard/pages/Profile";
 import Settings from "../pages/dashboard/pages/Settings";
 import Analytics from "../pages/dashboard/pages/Analytics";
 import DblogPosts from "../pages/dashboard/pages/DblogPosts";
-import Orders from "../pages/dashboard/pages/Orders";
-import DashboardLayout from "../layouts/DashboardLayout";
-import Products from "../pages/dashboard/pages/Products";
-import Overview from "../pages/dashboard/pages/Overview";
-import AddProduct from "../pages/dashboard/pages/AddProduct";
-import Customers from "../pages/dashboard/pages/Customers";
-import CartPage from "../pages/home/CartPage";
-import Shop from "../pages/shop/Shop";
-import MyOrders from "../pages/dashboard/pages/MyOrders";
+import Wishlist from "../pages/dashboard/pages/Wishlist";
 
 const Router = createBrowserRouter([
   {
     path: "/",
-    Component: MainLayout,
+    element: <MainLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, Component: Home },
-      { path: "services", Component: Services },
-      { path: "about", Component: About },
-      { path: "contact", Component: Contact },
-      { path: "cart", Component: CartPage },
-      { path: "shop", Component: Shop },
+      { index: true, element: <Home /> },
+      { path: "services", element: <Services /> },
+      { path: "about", element: <About /> },
+      { path: "contact", element: <Contact /> },
+      { path: "cart", element: <CartPage /> },
+      { path: "shop", element: <Shop /> },
 
-      // 🔓 Public-only routes
+      // Public routes
       {
-        Component: PublicRoute,
+        element: <PublicRoute />,
         children: [
-          { path: "login", Component: Login },
-          { path: "register", Component: Register },
+          { path: "login", element: <Login /> },
+          { path: "register", element: <Register /> },
         ],
       },
 
-      // 🔐 Private routes
+      // Private non-dashboard
       {
-        Component: PrivateRoute,
-        children: [
-          { path: "dashboard", Component: Dashboard },
-          { path: "blog/:slug", Component: BlogDetails },
-        ],
+        element: <PrivateRoute />,
+        children: [{ path: "blog/:slug", element: <BlogDetails /> },{ path: "profile", element: <Profile /> }],
       },
     ],
   },
-  // 📊 dashboard route
+
+  // Dashboard
   {
     path: "/dashboard",
-
-    Component: DashboardLayout,
-
+    Component:DashboardLayout,
     children: [
-      {
-        index: true,
-
-        Component: () => (
-          <RoleRoute allow={["admin", "user"]}>
-            <Overview />
-          </RoleRoute>
-        ),
-      },
-
-      {
-        path: "products",
-
-        Component: () => (
-          <RoleRoute allow={["admin"]}>
-            <Products />
-          </RoleRoute>
-        ),
-      },
-
-      {
-        path: "add-product",
-
-        Component: () => (
-          <RoleRoute allow={["admin"]}>
-            <AddProduct />
-          </RoleRoute>
-        ),
-      },
-
-      {
-        path: "orders",
-
-        Component: () => (
-          <RoleRoute allow={["admin"]}>
-            <Orders />
-          </RoleRoute>
-        ),
-      },
-
-      {
-        path: "blog",
-
-        Component: () => (
-          <RoleRoute allow={["admin"]}>
-            <DblogPosts />
-          </RoleRoute>
-        ),
-      },
-
-      {
-        path: "analytics",
-
-        Component: () => (
-          <RoleRoute allow={["admin"]}>
-            <Analytics />
-          </RoleRoute>
-        ),
-      },
-
-      {
-        path: "settings",
-
-        Component: () => (
-          <RoleRoute allow={["admin", "user"]}>
-            <Settings />
-          </RoleRoute>
-        ),
-      },
-      {
-        path: "customers",
-        Component: () => (
-          <RoleRoute allow={["admin", "user"]}>
-            <Customers />
-          </RoleRoute>
-        ),
-      },
-      {
-        path: "my-orders",
-        Component: () => (
-          <RoleRoute allow={["user"]}>
-            <MyOrders />
-          </RoleRoute>
-        ),
-      },
+      { index: true, element: <RoleRoute allow={["admin", "user"]}><Overview /></RoleRoute> },
+      { path: "customers", element: <RoleRoute allow={["admin"]}><Customers /></RoleRoute> },
+      { path: "products", element: <RoleRoute allow={["admin"]}><Products /></RoleRoute> },
+      { path: "add-product", element: <RoleRoute allow={["admin"]}><AddProduct /></RoleRoute> },
+      { path: "orders", element: <RoleRoute allow={["admin"]}><Orders /></RoleRoute> },
+      { path: "wishlist", element: <RoleRoute allow={["admin", "user"]}><Wishlist /></RoleRoute> },
+      { path: "my-orders", element: <RoleRoute allow={["user"]}><MyOrders /></RoleRoute> },
+      { path: "blog", element: <RoleRoute allow={["admin"]}><DblogPosts /></RoleRoute> },
+      { path: "analytics", element: <RoleRoute allow={["admin"]}><Analytics /></RoleRoute> },
+      { path: "settings", element: <RoleRoute allow={["admin","user"]}><Settings /></RoleRoute> },
     ],
   },
 ]);

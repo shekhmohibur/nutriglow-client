@@ -21,13 +21,6 @@
   },
 
   {
-    "label": "Profile",
-    "path": "/dashboard/profile",
-    "icon": "user",
-    "roles": ["user"]
-  },
-
-  {
     "label": "Products",
     "path": "/dashboard/products",
     "icon": "box",
