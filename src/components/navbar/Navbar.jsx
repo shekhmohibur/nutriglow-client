@@ -93,7 +93,7 @@ const Navbar = ({ userData }) => {
               autoFocus={isSearchOpen}
               placeholder="Search products..."
               className={`absolute right-3 transition-all duration-300
-              border rounded-md px-3 py-1 outline-none bg-white shadow
+              border border-gray-200 rounded-md px-3 py-1 outline-none bg-white shadow
               ${
                 isSearchOpen
                   ? "w-40 md:w-56 opacity-100"
